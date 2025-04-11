@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const details = {
             1: {
                 title: 'Tier 1: Starter',
-                monthly: 'Monthly Return: $66',
+                monthly: 'Monthly Return per Tiger: $66',
                 roi: {
                     0: '$0',
                     6: '+$396',
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             2: {
                 title: 'Tier 2: Explorer',
-                monthly: 'Monthly Return: $132',
+                monthly: 'Monthly Return per Tiger: $132',
                 roi: {
                     0: '-$300',
                     6: '+$492',
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             3: {
                 title: 'Tier 3: Builder',
-                monthly: 'Monthly Return: $198',
+                monthly: 'Monthly Return per Tiger: $198',
                 roi: {
                     0: '-$1,300',
                     6: '-$112',
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             4: {
                 title: 'Tier 4: Master',
-                monthly: 'Monthly Return: $264',
+                monthly: 'Monthly Return per Tiger: $264',
                 roi: {
                     0: '-$3,100',
                     6: '-$1,516',
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             5: {
                 title: 'Tier 5: Elite',
-                monthly: 'Monthly Return: $330',
+                monthly: 'Monthly Return per Tiger: $330',
                 roi: {
                     0: '-$5,600',
                     6: '-$3,620',
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             '5opt': {
                 title: 'Tier 5: Elite+',
-                monthly: 'Monthly Return: $435',
+                monthly: 'Monthly Return per Tiger: $435',
                 roi: {
                     0: '-$5,600',
                     6: '-$2,990',
