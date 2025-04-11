@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const details = {
             1: {
                 title: 'Tier 1: Starter',
-                monthly: '$66',
+                monthly: 'Monthly Return: $66',
                 roi: {
                     0: '$0',
                     6: '+$396',
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             2: {
                 title: 'Tier 2: Explorer',
-                monthly: '$132',
+                monthly: 'Monthly Return: $132',
                 roi: {
                     0: '-$300',
                     6: '+$492',
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             3: {
                 title: 'Tier 3: Builder',
-                monthly: '$198',
+                monthly: 'Monthly Return: $198',
                 roi: {
                     0: '-$1,300',
                     6: '-$112',
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             4: {
                 title: 'Tier 4: Master',
-                monthly: '$264',
+                monthly: 'Monthly Return: $264',
                 roi: {
                     0: '-$3,100',
                     6: '-$1,516',
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             5: {
                 title: 'Tier 5: Elite',
-                monthly: '$330',
+                monthly: 'Monthly Return: $330',
                 roi: {
                     0: '-$5,600',
                     6: '-$3,620',
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             '5opt': {
                 title: 'Tier 5: Elite+',
-                monthly: '$435',
+                monthly: 'Monthly Return: $435',
                 roi: {
                     0: '-$5,600',
                     6: '-$2,990',
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="modal-content">
                 <h2>${tierInfo.title}</h2>
                 <div class="tier-stats">
-                    <p>Monthly Cost: <span>${tierInfo.monthly}</span></p>
+                    <p><span>${tierInfo.monthly}</span></p>
                 </div>
                 <div class="roi-timeline">
                     <h3>Return on Investment Timeline</h3>
