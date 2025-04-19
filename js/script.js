@@ -81,12 +81,9 @@ function usdToSats(usdAmount, btcPrice) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('.story-section');
-    const continueBtn = document.getElementById('beginJourney');
     const cards = document.querySelectorAll('.card');
     const modal = document.getElementById('tierModal');
     const closeModal = document.querySelector('.close-modal');
-    let currentSection = 0;
     let currentBtcPrice = null;
 
     // Initialize Bitcoin price
@@ -100,26 +97,21 @@ document.addEventListener('DOMContentLoaded', () => {
         if (price) currentBtcPrice = price;
     }, 60000);
 
-    // Initialize the first section
-    showSection(0);
-
     // Close modal when clicking the close button
     closeModal.addEventListener('click', () => {
-        modal.style.display = 'none';
+        modal.classList.remove('active');
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 300);
     });
 
     // Close modal when clicking outside
     window.addEventListener('click', (event) => {
         if (event.target === modal) {
-            modal.style.display = 'none';
-        }
-    });
-
-    // Handle continue button click
-    continueBtn.addEventListener('click', () => {
-        if (currentSection < sections.length - 1) {
-            currentSection++;
-            showSection(currentSection);
+            modal.classList.remove('active');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
         }
     });
 
@@ -139,7 +131,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const documentHeight = document.documentElement.scrollHeight;
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
-        // Toon footer alleen als we dicht bij de bodem zijn
         if (windowHeight + scrollTop >= documentHeight - 100) {
             footer.classList.add('visible');
         } else {
@@ -147,33 +138,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Check footer visibility on scroll
+    // Check footer visibility on scroll and resize
     window.addEventListener('scroll', checkFooterVisibility);
-    // Check on page load
-    checkFooterVisibility();
-    // Check when window is resized
     window.addEventListener('resize', checkFooterVisibility);
+    checkFooterVisibility();
 
-    function showSection(index) {
-        // Hide all sections
-        sections.forEach(section => {
-            section.classList.remove('active');
+    // Add scroll animations
+    const observerOptions = {
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+            }
         });
+    }, observerOptions);
 
-        // Show current section
-        sections[index].classList.add('active');
-
-        // Update continue button text
-        if (index === sections.length - 1) {
-            continueBtn.textContent = 'Start Over';
-            continueBtn.addEventListener('click', () => {
-                currentSection = 0;
-                showSection(0);
-            }, { once: true });
-        } else {
-            continueBtn.textContent = 'Continue';
-        }
-    }
+    document.querySelectorAll('.card, .story-section').forEach(element => {
+        observer.observe(element);
+    });
 
     async function showTierDetails(tier) {
         // Handle different tier 5 versions
@@ -254,21 +239,4 @@ document.addEventListener('DOMContentLoaded', () => {
         // Show the modal
         modal.style.display = 'flex';
     }
-
-    // Add scroll animations
-    const observerOptions = {
-        threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll('.card, .story-section').forEach(element => {
-        observer.observe(element);
-    });
 }); 

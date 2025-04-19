@@ -463,6 +463,14 @@ body {
     padding: 1rem;
     text-align: center;
     position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.story-section.animate {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .story-section h2 {
@@ -495,7 +503,7 @@ body {
     padding: 1.5rem;
     border-radius: 10px;
     text-align: center;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease-in-out;
     min-height: 150px;
     display: flex;
     flex-direction: column;
@@ -504,6 +512,13 @@ body {
     cursor: pointer;
     border: 1px solid rgba(255, 165, 0, 0.2);
     gap: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.card.animate {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .card h3 {
@@ -520,7 +535,7 @@ body {
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 0 20px var(--glow-color);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Modal Styling Improvements */
@@ -537,10 +552,12 @@ body {
     z-index: 2000;
     backdrop-filter: blur(8px);
     padding: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
 }
 
 .modal.active {
-    display: flex;
+    opacity: 1;
 }
 
 .modal-content {
@@ -771,76 +788,19 @@ body {
     }
 }
 
+/* Remove continue button styles */
 .continue-btn {
-    background: linear-gradient(145deg, var(--primary-color), var(--secondary-color));
-    color: var(--background-color);
-    border: none;
-    padding: clamp(0.8rem, 2vw, 1.2rem) clamp(1.5rem, 3vw, 2.5rem);
-    font-family: 'Press Start 2P', cursive;
-    font-size: clamp(0.8rem, 1.5vw, 1rem);
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    border-radius: 8px;
-    box-shadow: 0 0 15px var(--glow-color),
-                inset 0 0 10px rgba(255, 255, 255, 0.2);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 2rem;
-    outline: none;
+    display: none;
 }
 
-.continue-btn::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: rgba(255, 255, 255, 0.1);
-    transform: rotate(45deg) translateY(100%);
-    transition: transform 0.6s ease;
+/* Modal animation improvements */
+.modal {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
 }
 
-.continue-btn:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 0 25px var(--glow-color),
-                inset 0 0 15px rgba(255, 255, 255, 0.3);
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-}
-
-.continue-btn:hover::before {
-    transform: rotate(45deg) translateY(-100%);
-}
-
-.continue-btn:active {
-    transform: translateY(1px) scale(0.98);
-    box-shadow: 0 0 10px var(--glow-color);
-}
-
-/* Mobile Adjustments for Button */
-@media (max-width: 768px) {
-    .continue-btn {
-        padding: clamp(0.6rem, 1.5vw, 1rem) clamp(1.2rem, 2.5vw, 2rem);
-        font-size: clamp(0.7rem, 1.2vw, 0.9rem);
-    }
-}
-
-@media (max-width: 480px) {
-    .continue-btn {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.7rem;
-        margin-top: 1.5rem;
-    }
-}
-
-/* Touch Device Adjustments */
-@media (hover: none) and (pointer: coarse) {
-    .continue-btn {
-        min-height: 44px;
-        min-width: 120px;
-    }
+.modal.active {
+    opacity: 1;
 }
 
 /* Desktop Specific Adjustments */
