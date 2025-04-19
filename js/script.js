@@ -180,6 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const tierIndex = tier === "5opt" ? 5 : parseInt(tier) - 1;
         const tierData = tiers[tierIndex];
         const modalContent = document.getElementById('modalContent');
+        const modal = document.getElementById('tierModal');
         
         // Ensure we have the current Bitcoin price
         if (!currentBtcPrice) {
@@ -187,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         let content = '<h2>Bitcoin Tiger Collective</h2>';
-        content += `<h3>Tier ${tier}: ${tier === "5opt" ? "Elite" : "Explorer"}</h3>`;
+        content += `<h3>Tier ${tier}: ${tier === "5opt" ? "Elite+" : "Explorer"}</h3>`;
         
         content += '<div class="monthly-return">';
         content += '<h4>Monthly Return per Tiger:</h4>';
@@ -222,15 +223,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         content += '</div></div>';
-        content += '<button class="close-button">Close</button>';
         
         modalContent.innerHTML = content;
-        modal.style.display = 'block';
-
-        // Add click handler for the new close button
-        modalContent.querySelector('.close-button').addEventListener('click', () => {
-            modal.style.display = 'none';
+        
+        // Add active class for animation
+        modal.classList.add('active');
+        
+        // Add event listeners for closing
+        const closeModal = () => {
+            modal.classList.remove('active');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300); // Match the CSS transition duration
+        };
+        
+        // Close on clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
         });
+        
+        // Close on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+        
+        // Show the modal
+        modal.style.display = 'flex';
     }
 
     // Add scroll animations
